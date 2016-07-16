@@ -1,7 +1,7 @@
 {
   "name": "node-wav",
   "version": "0.0.1",
-  "description": "High performance WAV file parser",
+  "description": "High performance WAV file decoder and encoder",
   "main": "./index.js",
   "scripts": {
     "test": "./node_modules/nodeunit/bin/nodeunit ./test.js"
