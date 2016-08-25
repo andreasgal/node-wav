@@ -3,9 +3,10 @@
 
 "use strict";
 
+const fs = require('fs');
 const encoder = require('wav-encoder');
 const decoder = require('wav-decoder');
-const wav = require('./index');
+const wav = require('../index');
 
 function make_test_data(channels, samples) {
   let data = [];
@@ -17,7 +18,7 @@ function make_test_data(channels, samples) {
   return data;
 }
 
-exports.test_wav = function (test) {
+exports.test_wav = test => {
   test.expect(25);
   let samples = 10;
   let channels = 2;
@@ -51,4 +52,15 @@ exports.test_wav = function (test) {
       });
     });
   }))).then(() => test.done());
-}
+};
+
+exports.test_buffer_offset = test => {
+  test.expect(1);
+  let files = ["./tests/file1.wav"];
+  files.forEach(file => {
+    let buffer = fs.readFileSync(file);
+    let decoded = wav.decode(buffer);
+    test.equal(decoded.sampleRate, 16000);
+    test.done();
+  });
+};

@@ -4,7 +4,7 @@
   "description": "High performance WAV file decoder and encoder",
   "main": "./index.js",
   "scripts": {
-    "test": "./node_modules/nodeunit/bin/nodeunit ./test.js"
+    "test": "./node_modules/nodeunit/bin/nodeunit ./tests/test.js"
   },
   "repository": {
     "type": "git",
