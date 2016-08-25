@@ -144,13 +144,21 @@ function lookup(table, bitDepth, floatingPoint) {
 }
 
 function decode(buffer) {
-  // typed arrays and Buffer both have an array buffer as .buffer property
-  if (buffer.buffer)
+  let pos = 0, end = 0;
+  if (buffer.buffer) {
+    // If we are handed a typed array or a buffer, then we have to consider the
+    // offset and length into the underlying array buffer.
+    pos = buffer.byteOffset;
+    end = buffer.length;
     buffer = buffer.buffer;
+  } else {
+    // If we are handed a straight up array buffer, start at offset 0 and use
+    // the full length of the buffer.
+    pos = 0;
+    end = buffer.byteLength;
+  }
 
-  let end = buffer.byteLength;
   let v = new DataView(buffer);
-  let pos = 0;
 
   function u8() {
     let x = v.getUint8(pos);
