@@ -1,6 +1,8 @@
 node-wav
 ========
 
+[![Build Status](https://travis-ci.org/andreasgal/node-wav.svg?branch=master)](https://travis-ci.com/andreasgal/node-wav)
+
 High performance WAV decoder and encoder. The decoder is up to 750x faster than
 the 'wav-decoder' npm module.
 
