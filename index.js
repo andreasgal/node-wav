@@ -282,7 +282,7 @@ function encode(channelData, opts) {
   u32(buffer.byteLength - 44);
   lookup(data_encoders, bitDepth, floatingPoint)(buffer, pos, channelData, channels, samples);
 
-  return Buffer(buffer);
+  return new Buffer(buffer);
 }
 
 module.exports = {
