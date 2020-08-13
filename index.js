@@ -229,6 +229,7 @@ function decode(buffer) {
       break;
     }
     pos = next;
+    if (pos%2) pos +=1;
   }
 }
 
