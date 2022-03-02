@@ -200,8 +200,8 @@ function decode(buffer) {
     switch (type) {
     case 'fmt ':
       let formatId = u16();
-      if (formatId !== 0x0001 && formatId !== 0x0003)
-        throw new TypeError('Unsupported format in WAV file: ' + formatId.toString(16));
+      if (formatId !== 0x0001 && formatId !== 0x0003 && formatId !== 0xFFFE)
+        throw new TypeError(`Unsupported format in WAV file: ${formatId.toString(16)}`);
       fmt = {
         format: 'lpcm',
         floatingPoint: formatId === 0x0003,
